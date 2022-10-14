@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :service_links
+  resources :services
+  resources :stations
   resources :diagnoses
   resources :conditions
   resources :prescriptions

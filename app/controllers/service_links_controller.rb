@@ -1,0 +1,2 @@
+class ServiceLinksController < ApplicationController
+end
