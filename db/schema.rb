@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_13_184031) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_140441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,37 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_184031) do
     t.string "phone_number", null: false
     t.string "image", null: false
     t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "service_links", force: :cascade do |t|
+    t.integer "service_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "accepted", default: false, null: false
+    t.integer "user_access_level", default: 0, null: false
+    t.boolean "service_access_profile", default: false, null: false
+    t.boolean "service_access_medical_profile", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.integer "station_id", null: false
+    t.string "service_type", null: false
+    t.string "service_phone_number", null: false
+    t.boolean "active", default: true, null: false
+    t.boolean "accepting_links", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "street_address", null: false
+    t.string "station_phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
